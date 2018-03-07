@@ -1,7 +1,7 @@
 # zsh-fmt-command-line
 Auto-formats long command lines in zsh.
 
-Source `fmt-command-line.zsh` from `.zshrc`. When using the vi-mode, it's bound to <leader>f.
+Source `fmt-command-line.zsh` from `.zshrc`. When using the vi-mode, it's bound to `<leader>f`.
 
 Typically converts 
   
