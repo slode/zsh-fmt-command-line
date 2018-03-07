@@ -13,14 +13,12 @@ def print_cmd(command, line_length=80, indent=r" "*4):
     lines = textwrap.wrap(
         command,
         width=line_length,
-        subsequent_indent=r" \\\n" + indent,
+        subsequent_indent=indent,
         break_long_words=False,
         break_on_hyphens=False)
 
-    for line in lines:
-        sys.stdout.write(line)
-    sys.stdout.write("\n")
+    return r" \\\n".join(lines)
 
 if __name__ == "__main__":
-    stripped = [line.strip(r'\ ') for line in sys.stdin.readlines()]
-    print_cmd(" ".join(stripped))
+    stripped = [line.strip('\ \n') for line in sys.stdin.readlines()]
+    sys.stdout.write(print_cmd(" ".join(stripped)))
