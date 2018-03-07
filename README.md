@@ -2,7 +2,7 @@
 
 ## Installation
 
-Source `fmt-command-line.zsh` from `.zshrc`. When using the vi-mode, it's bound to `<leader>f`.
+Source `fmt-command-line.zsh` from `.zshrc`. Enabled in vi-mode (as that's what I'm using). By default, it's bound to `<leader>f`.
 
 
 ## Usage
