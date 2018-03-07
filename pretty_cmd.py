@@ -1,14 +1,19 @@
 #!/usr/bin/env python
 """
-Formats a long command on stdin sensibly, and prints it to output.
-"""
+Formats long command lines on stdin by breaking the lines and adding a
+backslash. Indents subsequent lines. Then prints the output followed by a
+newline.
 
-def print_cmd(command, line_length=80, indent="    "):
-    import sys, textwrap
+Author: Stian Lode stian.lode@gmail.com
+
+"""
+import sys, textwrap
+
+def print_cmd(command, line_length=80, indent=r" "*4):
     lines = textwrap.wrap(
         command,
         width=line_length,
-        subsequent_indent=" \\\\\n" + indent,
+        subsequent_indent=r" \\\n" + indent,
         break_long_words=False,
         break_on_hyphens=False)
 
@@ -17,10 +22,5 @@ def print_cmd(command, line_length=80, indent="    "):
     sys.stdout.write("\n")
 
 if __name__ == "__main__":
-    import sys
-    stripped_lines = []
-    for line in sys.stdin.readlines():
-        l = line.strip()
-        l = l.rstrip('\\')
-        stripped_lines.append(l)
-    print_cmd(" ".join(stripped_lines))
+    stripped = [line.strip(r'\ ') for line in sys.stdin.readlines()]
+    print_cmd(" ".join(stripped))
